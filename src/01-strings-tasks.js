@@ -18,10 +18,11 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(value1='', value2='') {
-  return value1 + value2 + '';
+function concatenateStrings(value1 = '', value2 = '') {
+  return value1 + value2;
 }
 
+// console.log(concatenateStrings('', 'bb'));
 
 /**
  * Returns the length of given string.
