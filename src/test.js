@@ -1,45 +1,29 @@
-// // *            '┌────┐\n'+
-// // *  (6,4) =>  '│    │\n'+
-// // *            '│    │\n'+
-// // *            '└────┘\n'
-// // *
-// // *  (2,2) =>  '┌┐\n'+
-// // *            '└┘\n'
-// // *
-// // *             '┌──────────┐\n'+
-// // *  (12,3) =>  '│          │\n'+
-// // *             '└──────────┘\n'
-// // *
-// // */
-// function getRectangleString(width, height) {
-//   const a = '┌',
-//     b = '─',
-//     c = '┐',
-//     d = '│',
-//     f = '└',
-//     g = '┘';
-//   let result = '';
-//   for (let i = 1; i <= height; i += 1) {
-//     for (let j = 1; j <= width; j += 1) {
-//       if (i === 1 && j === 1) {
-//         result += a;
-//       } else if (i === 1 && j === width) {
-//         result += c;
-//       }  else if (i === height && j === 1) {
-//         result += f;
-//       } else if (i === height && j === width) {
-//         result += g;
-//       } else if (j === 1 || j === width) {
-//         result += d;
-//       } else if (i === 1 || i === height) {
-//         result += b;
-//       } else {
-//         result += ' ';
-//       }
+// // // // // // /**
+// // // // //  * Tries to convert value to number and returns it if conversion was successful;
+// // // // // * otherwise returns default value passed as a second argument.
+// // // // // *
+// // // // // * @param {any} value
+// // // // // * @param {any} def
+// // // // // * @return {number}
+// // // // // *
+// // // // // * @example
+// // // // // *   toNumber(null, 0) => 0
+// // // // // *   toNumber('test', 0) => 0
+// // // // // *   toNumber('1', 0) => 1
+// // // // // *   toNumber(42, 0) => 42
+// // // // // *   toNumber(new Number(42), 0) => 42
+// // // // // */
+// function toNumber(value, def) {
+//     let result;
+//     if (value === undefined) {
+//       result = def;
+//     } else if (isFinite(+value)) {
+//       result = +value;
+//     } else {
+//       result = def;
 //     }
-//     result += '\n';
+//     return result;
 //   }
-//   return result;
-// }
 
-// console.log(getRectangleString(6, 4));
+// console.log(toNumber('test', 0));
+// // console.log(typeof +undefined);
