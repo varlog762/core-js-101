@@ -285,8 +285,47 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  let firstIndex = 0;
+  let secondIndex = 0;
+  if (value.length === 3) {
+    firstIndex = 9;
+  } else {
+    switch (value[0]) {
+      case 'A':
+        firstIndex = 0;
+        break;
+      case 'J':
+        firstIndex = 10;
+        break;
+      case 'Q':
+        firstIndex = 11;
+        break;
+      case 'K':
+        firstIndex = 12;
+        break;
+      default:
+        firstIndex = +value[0] - 1;
+        break;
+    }
+  }
+  switch (value[value.length - 1]) {
+    case '♣':
+      secondIndex = 0;
+      break;
+    case '♦':
+      secondIndex = 13;
+      break;
+    case '♥':
+      secondIndex = 26;
+      break;
+    case '♠':
+      secondIndex = 39;
+      break;
+    default:
+      break;
+  }
+  return firstIndex + secondIndex;
 }
 
 
