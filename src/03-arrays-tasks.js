@@ -110,14 +110,7 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-  const result = [];
-  arr.filter((item) => {
-    if (item) {
-      result.push(item);
-    }
-    return item;
-  });
-  return result;
+  return arr.filter(Boolean);
 }
 
 /**
@@ -147,11 +140,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  const result = arr.reduce((accum, item) => {
+  return arr.reduce((accum, item) => {
     accum.push(item.length);
     return accum;
   }, []);
-  return result;
 }
 
 /**
@@ -423,8 +415,8 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 
