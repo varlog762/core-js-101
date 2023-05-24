@@ -141,8 +141,12 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const a = rect1.top < rect2.top + rect2.width;
+  const b = rect1.top + rect1.width > rect2.top;
+  const c = rect1.left < rect2.left + rect2.height;
+  const d = rect1.left + rect1.height > rect2.left;
+  return (a && b && c && d);
 }
 
 
@@ -172,8 +176,13 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const a = (point.x - circle.center.x) * (point.x - circle.center.x);
+  const b = (point.y - circle.center.y) * (point.y - circle.center.y);
+  if (Math.sqrt(a + b) >= circle.radius) {
+    return false;
+  }
+  return true;
 }
 
 
@@ -188,10 +197,28 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const arrFromStr = str.split('');
+  const resultArr = [];
+  let result = '';
+  arrFromStr.forEach((char) => {
+    let newStr = str;
+    let count = 0;
+    while (newStr.includes(char)) {
+      count += 1;
+      newStr = newStr.slice(newStr.indexOf(char) + 1);
+    }
+    if (count === 1) {
+      resultArr.push(char);
+    }
+  });
+  if (resultArr.length > 0) {
+    [result] = resultArr;
+  } else {
+    result = null;
+  }
+  return result;
 }
-
 
 /**
  * Returns the string representation of math interval,
@@ -232,8 +259,9 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const res = str;
+  return res.split('').reverse().join('');
 }
 
 
@@ -249,8 +277,9 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const res = num.toString();
+  return +res.split('').reverse().join('');
 }
 
 
